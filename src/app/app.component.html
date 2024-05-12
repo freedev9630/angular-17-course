@@ -1,24 +1,22 @@
 <div class="todo-container">
-    @for (
-            todo of todoData;
-            track todo.id;
-            let f = $first;
-            let l = $last;
-            let odd = $odd;
-            let even = $even;
-        ) {
-        <app-todo
-            [todoData]="todo"
-            [first]="f"
-            [last]="l"
-            [odd]="odd"
-            [even]="even"
-            (onClickIcon)="getTodoInfo($event)"
-        >
-        </app-todo>
-    } @empty {
-        No hay datos
-    }
+    <!-- <app-todo
+        *ngIf="todoData"
+        #todoRef
+        [todoData]="todoData"
+        (onClickIcon)="todoData = null"
+    >
+        <app-input placeholder="Nombres"></app-input>
+        <app-input placeholder="Apellidos"></app-input>
+        <app-input placeholder="Edad" type="number"></app-input>
+        <div class="comment" style="margin-top: 1rem;">
+            <textarea rows="5"></textarea>
+        </div>
+    </app-todo> -->
+    <router-outlet></router-outlet>
 </div>
 
-<button (click)="orderData()">Ordenar</button>
+<br>
+<br>
+<button (click)="router.navigate([''])">Home</button>
+<button (click)="router.navigate(['/todo'])">Todo</button>
+<button (click)="change()">Modificar</button>

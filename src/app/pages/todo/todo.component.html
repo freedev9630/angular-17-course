@@ -1,13 +1,8 @@
+<button (click)="selectContent()">Seleccionar contenido proyectado</button>
+
 <div
     class="card-container"
-    [ngClass]="
-     {
-        'first': first,
-        'last': last,
-        'odd': odd,
-        'even': even
-     }
-    "
+    #divRef
 >
 @if (todoData) {
     <span class="icon-close" (click)="onClickIcon.emit(todoData)">x</span>
@@ -17,6 +12,7 @@
             <p>{{todoData.description}}</p>
         </div>
     </div>
+    <ng-content></ng-content>
     <div class="card-content pills-container">
         <p>Estado:
             <span

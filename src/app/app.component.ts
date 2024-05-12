@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { TodoComponent } from './pages/todo/todo.component';
 import { TODO_DATA } from '../assets/todo';
 import { NTodo } from './models/todo.model';
 import { CommonModule } from '@angular/common';
+import { InputComponent } from './components/input/input.component';
 
 @Component({
   selector: 'app-root',
@@ -11,18 +12,25 @@ import { CommonModule } from '@angular/common';
   imports: [
     RouterOutlet,
     TodoComponent,
-    CommonModule
+    CommonModule,
+    InputComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  todoData = TODO_DATA;
+  todoData: any = TODO_DATA[0];
 
-  constructor() {}
+  // @ViewChild('todoRef', {read : ElementRef }) todo?: ElementRef;
+
+  @ViewChildren('todoRef', { read: ElementRef}) todo?: QueryList<ElementRef>;
+  
+  constructor(
+    public router: Router
+  ) {}
 
   getTodoInfo(val: NTodo.TodoData) {
-    console.log(val);
+    // console.log(val);
   }
 
   trackByFn(_index: number, item: NTodo.TodoData) {
@@ -30,6 +38,19 @@ export class AppComponent {
   }
 
   orderData() {
-    this.todoData.sort((a, b) => a.priority -  b.priority);
+    // this.todoData.sort((a, b) => a.priority -  b.priority);
+  }
+
+  change() {
+    // const todo = document.querySelectorAll('app-todo');
+    // this.todo?.changes.subscribe(values => {
+    //   console.log(values);
+      
+    // })
+    this.todoData = { ...this.todoData, description: 'ngOnChanges' };
+  }
+
+  addTodo() {
+    // this.todoData = TODO_DATA.filter(item => item.id < 5);
   }
 }
