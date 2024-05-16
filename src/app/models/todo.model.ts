@@ -1,5 +1,15 @@
 export namespace NTodo {
 
+    export interface TodosResponse {
+        totalRecords: number;
+        data: TodoData[]
+    }
+
+    export interface TodoResponse {
+        totalRecords: number;
+        data: TodoData
+    }
+
     export interface TodoData {
         title:       string;
         description: string;
