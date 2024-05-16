@@ -5,7 +5,6 @@
     border-radius: 1rem;
     height: 100%;
     position: relative;
-    
 
     .card-body {
         margin-top: 1rem;  
@@ -148,3 +147,14 @@
           }          
     }
 }
+
+// ::ng-deep {
+//     .card-container {
+//         border: 2px solid #F0F0F0;
+//         width: 14rem;
+//         box-shadow: 0.5rem 0.5rem 0.5rem 0 rgba(242,242,242,1);
+//         border-radius: 1rem;
+//         height: 100%;
+//         position: relative;
+//     }
+// }
