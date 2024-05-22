@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './pages/header/header.component';
 import { ApiService } from './services/api.service';
 import { FormsModule } from '@angular/forms';
+import { HighlightedDirective } from './directives/highlighted.directive';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     TodoComponent,
     CommonModule,
     HeaderComponent,
-    FormsModule
+    FormsModule,
+    HighlightedDirective
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

@@ -3,6 +3,7 @@
 <div class="todo-container">
     @for (item of todos.data; track $index) {
         <app-todo
+            [appHighlighted]="false"
             [todoData]="item"
             (onClickIcon)="deleteTodo($event)"
         >
