@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { TodoComponent } from './pages/todo/todo.component';
 import { NTodo } from './models/todo.model';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './pages/header/header.component';
+import { HeaderComponent } from './shared/header/header.component';
 import { ApiService } from './services/api.service';
 import { FormsModule } from '@angular/forms';
 import { HighlightedDirective } from './directives/highlighted.directive';
