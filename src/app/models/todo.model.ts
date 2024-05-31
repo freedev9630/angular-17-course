@@ -34,12 +34,6 @@ export namespace NTodo {
         LOW = 3
     }
 
-    export enum PriorityText {
-        HIGH = 'Alta',
-        MEDIUM = 'Media',
-        LOW = 'Baja'
-    }
-
     export enum Range {
         LOW = 30,
         MEDIUM = 60,

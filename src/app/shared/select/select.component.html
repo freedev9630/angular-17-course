@@ -1,0 +1,5 @@
+<select name="lang" id="lang" [value]="'es'" (change)="getLanguage($event)">
+    <option value="en">{{'lang.en' | translate }}</option>
+    <option value="es">{{'lang.es' | translate }}</option>
+    <option value="fr">{{'lang.fr' | translate }}</option>
+</select>

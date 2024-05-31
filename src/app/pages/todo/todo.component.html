@@ -1,41 +1,44 @@
 <div class="card-container">
     <header>
-        <span class="icon-close" (click)="onClickIcon.emit(todoData)">x</span>
+        <button class="icon-close" (click)="onClickIcon.emit(todoData())">x</button>
     </header>
     <div class="card-body">
         <div class="card-content">
-            <h3> {{todoData.title}}</h3>
-            <p>{{todoData.description}}</p>
+            <h3> {{todoData().title}}</h3>
+            <p>{{todoData().description}}</p>
         </div>
     </div>
     <section style="background-color: beige;">
         <ng-content></ng-content>
     </section>
+    <div>
+        {{'sprint' | translate }} {{sprint}}
+    </div>
     <div class="card-content pills-container">
-        <p>Estado:
+        <p>{{'status' | translate}}:
             <span
                 class="status to-do"
-                [ngClass]="todoData.class.status"
+                [ngClass]="todoData().class.status"
             >
-                {{todoData.status}}
+                {{todoData().status}}
             </span>
         </p>
-        <p>Prioridad:
+        <p>{{'priority' | translate}}:
             <span
                 class="priority"
-                [ngClass]="todoData.class.priority"
+                [ngClass]="todoData().class.priority"
             >
-            {{priority}}
+            {{todoData().priority | priority}}
             </span>
         </p>
-        <p>Fecha límite: {{todoData.deadLine | date}}</p>
+        <p>{{'deadline' | translate}}: {{todoData().deadLine | date: 'YYYY/MM/dd'}}</p>
     </div>
     <section class="progressbar-container">
-        <div class="progressbar" [attr.data-progress-range]="range">
-            <div class="progressbar__fill" [ngStyle]="{'width': progress + '%'}">
+        <div class="progressbar" [attr.data-progress-range]="todoData().progress * 100 | range ">
+            <div class="progressbar__fill" [ngStyle]="{'width': todoData().progress * 100 + '%'}">
             </div>
         </div>
-        <span>{{todoData.progress| percent }}</span> 
+        <span>{{todoData().progress| percent }}</span> 
     </section>
 
 </div>

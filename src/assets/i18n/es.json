@@ -1,0 +1,25 @@
+{
+    "addTodo": "Agregar tarea",
+    "deadline": "Fecha límite",
+    "status": "Estado",
+    "sprint": "Sprint",
+    "priority": "Prioridad",
+    "incrementCounter": "incrementar contador",
+    "lang": {
+        "en": "Inglés",
+        "es": "Español",
+        "fr": "Francés"
+    },
+    "todo": {
+        "priority": {
+            "high": "Alta",
+            "medium": "Media",
+            "low": "Baja"
+        },
+        "range": {
+            "high": "Alta",
+            "medium": "Media",
+            "low": "Baja"
+        }
+    }
+}

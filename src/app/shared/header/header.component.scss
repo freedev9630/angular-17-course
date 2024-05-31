@@ -2,4 +2,9 @@ header {
     background-color: beige;
     padding: 1rem;
     text-align: center;
+
+    section {
+        display: flex;
+        justify-content: space-between;
+    }
 }

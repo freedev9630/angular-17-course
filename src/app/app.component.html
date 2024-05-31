@@ -1,13 +1,33 @@
-<app-header></app-header>
-<button (click)="addTodo()">Agregar todo</button>
-<div class="todo-container">
-    @for (item of todos.data; track $index) {
-        <app-todo
-            [appHighlighted]="false"
-            [todoData]="item"
-            (onClickIcon)="deleteTodo($event)"
-        >
-        <textarea rows="10" [(ngModel)]="item.description" (blur)="updateTodo(item)"></textarea>
-        </app-todo>
-    }
+<app-header [counter]="counterService.getCounter"></app-header>
+{{derivedCounter()}}
+<button (click)="addTodo()">{{'addTodo' | translate }}</button>
+<button (click)="incrementCounter()">{{'incrementCounter' | translate }}</button>
+<div style="margin: 2rem;">
+    <input type="text" [(ngModel)]="searchText">
 </div>
+<!-- <section></section> -->
+<button (click)="onButtonCliked = true">Cargar contenido</button>
+<button (click)="onPrefetch = true">Cargar recursos</button>
+@defer (when onButtonCliked; prefetch when onPrefetch) {
+    <div class="todo-container">
+        @for (item of todos | filter: searchText; track $index) {
+            <app-todo
+                [appHighlighted]="false"
+                [todo]="item"
+                sprint="10"
+                (onClickIcon)="deleteTodo($event)"
+            >
+            <textarea rows="10" (blur)="updateTodo($event, item)">{{item.description}}</textarea>
+            </app-todo>
+        }
+    </div>
+}
+@placeholder {
+    <h2>Contenido de respaldo</h2>
+}
+@loading {
+    Cargando ... <img src="...imagenotfound" alt="">
+}
+@error {
+    Ha ocurrido un error
+}

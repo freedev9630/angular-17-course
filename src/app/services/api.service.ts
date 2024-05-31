@@ -1,16 +1,21 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
+import { API_CONFIG_TOKEN, IApiConfig } from '../constants/apiConfig';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(
-    private readonly http: HttpClient
-  ) { }
 
-  private readonly baseUrl = 'http://localhost:3000/todos';
+  constructor(
+    private readonly http: HttpClient,
+    @Inject(API_CONFIG_TOKEN) private readonly config: IApiConfig
+  ) {
+    this.baseUrl = `${this.config.baseUrl}/todos`;
+  }
+
+  private baseUrl = '';
 
 
   get<T>() {
